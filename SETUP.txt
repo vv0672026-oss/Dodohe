@@ -1,0 +1,35 @@
+FILEAGENT: 3 CHANNELS + 1 GROUP FORCE JOIN + OWNER BROADCAST
+
+GitHub repository root files:
+  bot.py
+  requirements.txt
+  welcome.jpg
+
+Render Environment:
+  BOT_TOKEN=your Telegram bot token
+  WEBHOOK_URL=https://YOUR-SERVICE.onrender.com/webhook
+  WEBHOOK_SECRET=your existing secret
+  SUPABASE_URL=your existing Supabase URL
+  SUPABASE_KEY=your existing Supabase secret key
+  OWNER_ID=6843286654
+  CHANNEL_1_ID=-100...
+  CHANNEL_1_LINK=https://t.me/...
+  CHANNEL_2_ID=-100...
+  CHANNEL_2_LINK=https://t.me/...
+  CHANNEL_3_ID=-100...
+  CHANNEL_3_LINK=https://t.me/...
+  GROUP_ID=-100...
+  GROUP_LINK=https://t.me/...
+
+Bot must be administrator in each channel and the group, with permission to post messages. For the group, it must be able to verify membership and send messages. Ensure all 4 IDs and links are configured; absent IDs are not checked.
+
+Build command: pip install -r requirements.txt
+Start command: uvicorn bot:app --host 0.0.0.0 --port $PORT
+Deploy with Clear build cache & deploy if openpyxl is missing.
+
+Owner /broadcast -> all users, all 4 chats, users + 4 chats, or one chosen chat.
+Only registered bot users who previously started the bot can receive direct messages.
+Broadcast is not visible in normal user's menu. Owner bypasses force join.
+User /start -> language selection (if new), welcome image and join buttons; Verify All checks all four joins.
+
+IMPORTANT: The app has not been tested against live Telegram, Render or Supabase.
